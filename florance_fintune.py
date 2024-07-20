@@ -241,7 +241,7 @@ def train_model(train_loader, val_loader, model, processor, epochs=10, lr=1e-6):
         #     render_inference_results(peft_model, val_loader.dataset, 6)
 
         # Save the model checkpoint every 25 epochs
-        if (epoch + 1) % 1== 0:
+        if (epoch + 1) % 25== 0:
             output_dir = f"./model_checkpoints/epoch_{epoch+1}"
             os.makedirs(output_dir, exist_ok=True)
             model.save_pretrained(output_dir)
@@ -251,7 +251,7 @@ def train_model(train_loader, val_loader, model, processor, epochs=10, lr=1e-6):
 
 # %%time
 
-EPOCHS = 3
+EPOCHS = 100
 LR = 5e-6
 
 epoch_loss = train_model(train_loader, val_loader, model, processor, epochs=EPOCHS, lr=LR)
